@@ -3,6 +3,9 @@ module Puppet::Parser::Functions
     block_string = ''
     args.each do |rules_hash|
       block_string += "\n"
+      if rules_hash.has_key?('comment')
+        block_string += "  # #{rules_hash['comment']}\n"
+      end
       block_string += "  if (req.#{rules_hash['key']} ~ \""
       block_string += rules_hash['values'].join("\" ||\n    req.#{rules_hash['key']} ~ \"")
       block_string += "\") {\n"
