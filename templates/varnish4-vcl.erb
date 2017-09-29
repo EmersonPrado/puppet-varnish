@@ -28,6 +28,9 @@ sub vcl_recv {
 <%- if @functions['vcl_recv_prepend'] -%>
   <%= @functions.delete('vcl_recv_prepend') %>
 <%- end -%>
+<%- if @recv_if_block -%>
+<%= scope.function_if_block([@recv_if_block]) %>
+<%- end -%>
 <%- if @defaultgrace -%>
   # Default grace period
   set req.grace = <%= @defaultgrace %>;
