@@ -61,6 +61,7 @@ class varnish::vcl (
   $cond_unset_cookies = undef,
   $unset_headers     = ['Via','X-Powered-By','X-Varnish','Server','Age','X-Cache'],
   $unset_headers_debugips = [ '172.0.0.1' ],
+  $recv_if_block     = undef,
 ) {
 
   include ::varnish
