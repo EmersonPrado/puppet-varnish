@@ -29,8 +29,13 @@ sub vcl_recv {
   <%= @functions.delete('vcl_recv_prepend') %>
 <%- end -%>
 <%- if @recv_if_block -%>
-<%= scope.function_if_block([@recv_if_block]) %>
-<%- end -%>
+  <%- if @recv_if_block.is_a?('Hash') -%>
+    <%= scope.function_if_block([@recv_if_block]) %>
+  <%- elsif @recv_if_block.is_a?('Array') -%>
+    <%- @recv_if_block.each do |block| -%>
+      <%= scope.function_if_block([block]) %>
+    <%- end -%>
+  <%- end -%>
 <%- if @defaultgrace -%>
   # Default grace period
   set req.grace = <%= @defaultgrace %>;
