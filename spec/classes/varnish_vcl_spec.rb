@@ -8,7 +8,14 @@ describe 'varnish::vcl', :type => :class do
   context "default values" do
     let :facts do
       {
-        :concat_basedir         => '/dne',
+        :concat_basedir            => '/dne',
+        :osfamily                  => 'Debian',
+        :operatingsystem           => 'Debian',
+        :operatingsystemrelease    => '7.0',
+        :operatingsystemmajrelease => '7',
+        :init_system               => 'init',
+        :selinux                   => false,
+        :architecture              => 'x86_64',
       }
     end
 
@@ -20,8 +27,8 @@ describe 'varnish::vcl', :type => :class do
       'mode'    => '0644',
       'require' => 'Package[varnish]',
       'notify'  => 'Service[varnish]'
-      ) 
+      )
     }
   end
-  
+
 end
