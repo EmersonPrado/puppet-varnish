@@ -7,6 +7,13 @@ describe 'varnish::acl', :type => :define do
     
   let(:title) { 'foo' }
   let(:facts) do {
+    :osfamily                  => 'Debian',
+    :operatingsystem           => 'Debian',
+    :operatingsystemmajrelease => '7',
+    :operatingsystemrelease    => '7.0',
+    :init_system               => 'init',
+    :selinux                   => false,
+    :architecture              => 'x86_64',
     :concat_basedir            => '/dne',
   } end
 
