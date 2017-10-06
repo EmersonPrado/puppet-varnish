@@ -9,6 +9,13 @@ describe 'varnish::vcl', :type => :class do
     let :facts do
       {
         :concat_basedir            => '/dne',
+        :os                        => {
+          :name    => 'Debian',
+          :release => {
+            :full => '7.0',
+          },
+        },
+        :lsbdistcodename           => 'Wheezy',
         :osfamily                  => 'Debian',
         :operatingsystem           => 'Debian',
         :operatingsystemrelease    => '7.0',
