@@ -7,7 +7,8 @@ describe 'varnish::repo', :type => :class do
         :osfamily        => 'Debian',
         :lsbdistid       => 'Debian',
         :operatingsystem => 'Debian',
-        :lsbdistcodename => 'foo'
+        :lsbdistcodename => 'foo',
+        :architecture    => 'x86_64',
       }
     end
 
@@ -16,7 +17,7 @@ describe 'varnish::repo', :type => :class do
       'location'   => 'http://repo.varnish-cache.org/debian',
       'repos'      => 'varnish-3.0',
       'key_source' => 'http://repo.varnish-cache.org/debian/GPG-key.txt'
-      ) 
+      )
     }
   end
 
@@ -29,7 +30,7 @@ describe 'varnish::repo', :type => :class do
         :architecture           => 'x86_64'
       }
     end
-    
+
     it { should compile }
     it { should_not contain_apt__source('varnish') }
     it { should contain_yumrepo('varnish').with(
@@ -48,7 +49,7 @@ describe 'varnish::repo', :type => :class do
         :architecture           => 'x86_64'
       }
     end
-    
+
     it { should compile }
     it { should_not contain_apt__source('varnish') }
     it { should contain_yumrepo('varnish').with(
