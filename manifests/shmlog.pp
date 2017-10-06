@@ -23,6 +23,8 @@ class varnish::shmlog (
   $size       = '170M',
 ) {
 
+  include varnish::service
+
   file { 'shmlog-dir':
     ensure  => directory,
     path    => $shmlog_dir,
