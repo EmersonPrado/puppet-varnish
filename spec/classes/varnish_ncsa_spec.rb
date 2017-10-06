@@ -5,6 +5,16 @@ describe 'varnish::ncsa', :type => :class do
     'include varnish'
   end
 
+  let(:facts) do {
+    :osfamily                  => 'Debian',
+    :operatingsystem           => 'Debian',
+    :operatingsystemrelease    => '7.0',
+    :operatingsystemmajrelease => '7',
+    :init_system               => 'init',
+    :selinux                   => false,
+    :architecture              => 'x86_64',
+  } end
+
   context 'default values' do
     it { should compile }
 
