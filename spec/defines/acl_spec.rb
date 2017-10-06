@@ -6,8 +6,10 @@ describe 'varnish::acl', :type => :define do
   end
     
   let(:title) { 'foo' }
-  let(:facts) { { :concat_basedir => '/dne' } }
-  
+  let(:facts) do {
+    :concat_basedir            => '/dne',
+  } end
+
   context("expected behaviour") do
     let(:params) { { :hosts => ['192.168.10.14'] } }
     it { should contain_file('/etc/varnish/includes/acls.vcl') }
