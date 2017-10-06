@@ -4,9 +4,16 @@ describe 'varnish::acl', :type => :define do
   let :pre_condition do
     'class { "::varnish::vcl": }'
   end
-    
+
   let(:title) { 'foo' }
   let(:facts) do {
+    :os                        => {
+      :name    => 'Debian',
+      :release => {
+        :full => '7.0',
+      },
+    },
+    :lsbdistcodename           => 'Wheezy',
     :osfamily                  => 'Debian',
     :operatingsystem           => 'Debian',
     :operatingsystemmajrelease => '7',
