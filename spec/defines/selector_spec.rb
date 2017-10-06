@@ -3,6 +3,12 @@ require 'spec_helper'
 describe 'varnish::selector', :type => :define do
   let(:facts) do
     {
+      :os                        => {
+        :name    => 'Ubuntu',
+        :release => {
+          :full => '16.04',
+        },
+      },
       architecture: 'x86_64',
       lsbdistcodename: 'xenial',
       lsbdistid: 'Debian',
