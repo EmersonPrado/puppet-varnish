@@ -26,7 +26,9 @@ describe 'varnish::acl', :type => :define do
 
   context("expected behaviour") do
     let(:params) { { :hosts => ['192.168.10.14'] } }
-    it { should contain_concat__fragment('foo-acl_body') }
+    it { should contain_concat__fragment('foo-acl_body').with(
+      :target => '/etc/varnish/includes/acls.vcl',
+    )}
   end
 
   context("invalid acl title") do
