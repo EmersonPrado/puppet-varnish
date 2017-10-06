@@ -6,6 +6,13 @@ describe 'varnish::ncsa', :type => :class do
   end
 
   let(:facts) do {
+    :os                        => {
+      :name    => 'Debian',
+      :release => {
+        :full => '7.0',
+      },
+    },
+    :lsbdistcodename           => 'Wheezy',
     :osfamily                  => 'Debian',
     :operatingsystem           => 'Debian',
     :operatingsystemrelease    => '7.0',
