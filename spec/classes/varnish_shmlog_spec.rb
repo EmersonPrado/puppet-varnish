@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe 'varnish::shmlog', :type => :class do
+
+  let(:facts) do {
+    :osfamily                  => 'Debian',
+    :operatingsystem           => 'Debian',
+    :operatingsystemmajrelease => '7',
+    :operatingsystemrelease    => '7.0',
+    :init_system               => 'init',
+    :selinux                   => false,
+    :architecture              => 'x86_64',
+  } end
+
   context "default values" do
 
     it { should compile }
@@ -18,9 +29,9 @@ describe 'varnish::shmlog', :type => :class do
     }
 
   end
-  
+
   context "default values" do
-    
+
   end
 
 end
