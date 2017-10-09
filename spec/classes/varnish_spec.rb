@@ -4,6 +4,12 @@ describe 'varnish', :type => :class do
   context "on a Debian OS" do
     let :facts do
       {
+        :os                        => {
+          :name    => 'Debian',
+          :release => {
+            :full => '7.0',
+          },
+        },
         :osfamily               => 'Debian',
         :operatingsystem           => 'Debian',
         :operatingsystemrelease    => '7.0',
