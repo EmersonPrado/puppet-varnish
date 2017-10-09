@@ -5,10 +5,15 @@ describe 'varnish', :type => :class do
     let :facts do
       {
         :osfamily               => 'Debian',
-        :operatingsystemrelease => '6',
+        :operatingsystem           => 'Debian',
+        :operatingsystemrelease    => '7.0',
+        :operatingsystemmajrelease => '7',
         :concat_basedir         => '/dne',
         :lsbdistid              => 'Debian',
-        :lsbdistcodename        => 'precise'
+        :lsbdistcodename        => 'Wheezy',
+        :init_system               => 'init',
+        :selinux                   => false,
+        :architecture              => 'x86_64',
       }
     end
     
@@ -68,10 +73,15 @@ describe 'varnish', :type => :class do
       {
         :osfamily        => 'RedHat',
         :concat_basedir  => '/dne',
-        :operatingsystem => 'RedHat'
+        :operatingsystem => 'RedHat',
+        :operatingsystemrelease    => '6.0',
+        :operatingsystemmajrelease => '6',
+        :init_system               => 'init',
+        :selinux                   => true,
+        :architecture              => 'x86_64',
       }
     end
-    
+
     it { should compile }
     it { should contain_class('varnish::install').with('add_repo' => 'true') }
     it { should contain_class('varnish::service').with('start' => 'yes') }
