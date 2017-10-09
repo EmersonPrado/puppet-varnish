@@ -28,7 +28,7 @@ describe 'varnish', :type => :class do
     it { should contain_class('varnish::service').with('start' => 'yes') }
     it { should contain_class('varnish::shmlog') }
     it { should contain_file('varnish-conf').with(
-      'ensure'  => 'present',
+      'ensure'  => 'file',
       'path'    => '/etc/default/varnish',
       'owner'   => 'root',
       'group'   => 'root',
@@ -93,7 +93,7 @@ describe 'varnish', :type => :class do
     it { should contain_class('varnish::service').with('start' => 'yes') }
     it { should contain_class('varnish::shmlog') }
     it { should contain_file('varnish-conf').with(
-      'ensure'  => 'present',
+      'ensure'  => 'file',
       'path'    => '/etc/sysconfig/varnish',
       'owner'   => 'root',
       'group'   => 'root',
