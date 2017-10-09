@@ -22,7 +22,7 @@ describe 'varnish', :type => :class do
         :architecture              => 'x86_64',
       }
     end
-    
+
     it { should compile }
     it { should contain_class('varnish::install').with('add_repo' => 'true') }
     it { should contain_class('varnish::service').with('start' => 'yes') }
@@ -43,7 +43,7 @@ describe 'varnish', :type => :class do
       'require' => 'Package[varnish]'
       )
     }
-    
+
     context "without shmlog_tempfs" do
       let :params do
         { :shmlog_tempfs => false }
@@ -51,7 +51,7 @@ describe 'varnish', :type => :class do
 
       it { should_not contain_class('varnish::shmlog') }
     end
-    
+
     context "default varnish-conf values" do
       it { should contain_file('varnish-conf').with_content(/START=yes/) }
       it { should contain_file('varnish-conf').with_content(/NFILES=131072/) }
@@ -64,8 +64,8 @@ describe 'varnish', :type => :class do
       it { should contain_file('varnish-conf').with_content(/VARNISH_MIN_THREADS=5/) }
       it { should contain_file('varnish-conf').with_content(/VARNISH_MAX_THREADS=500/) }
       it { should contain_file('varnish-conf').with_content(/VARNISH_THREAD_TIMEOUT=300/) }
-      it { should contain_file('varnish-conf').with_content(/VARNISH_STORAGE_FILE=\/var\/lib\/varnish-storage\/varnish_storage\.bin/) }    
-      it { should contain_file('varnish-conf').with_content(/VARNISH_STORAGE_SIZE=1G/) }    
+      it { should contain_file('varnish-conf').with_content(/VARNISH_STORAGE_FILE=\/var\/lib\/varnish-storage\/varnish_storage\.bin/) }
+      it { should contain_file('varnish-conf').with_content(/VARNISH_STORAGE_SIZE=1G/) }
       it { should contain_file('varnish-conf').with_content(/VARNISH_SECRET_FILE=\/etc\/varnish\/secret/) }
       it { should contain_file('varnish-conf').with_content(/VARNISH_STORAGE=\"malloc,\${VARNISH_STORAGE_SIZE}\"/) }
       it { should contain_file('varnish-conf').with_content(/VARNISH_TTL=120/) }
